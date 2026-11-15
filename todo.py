@@ -21,11 +21,18 @@ def add(text):
     save(tasks)
 
 
+def list_tasks():
+    for i, t in enumerate(load(), 1):
+        print(f"{i}. [{'x' if t['done'] else ' '}] {t['text']}")
+
+
 def main(argv):
     if len(argv) >= 3 and argv[1] == "add":
         add(" ".join(argv[2:]))
+    elif len(argv) == 2 and argv[1] == "list":
+        list_tasks()
     else:
-        print("usage: todo.py add <text>")
+        print("usage: todo.py add <text> | list")
 
 
 if __name__ == "__main__":
